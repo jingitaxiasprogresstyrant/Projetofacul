@@ -1,0 +1,165 @@
+# Sistema de Pedidos de Pizza
+
+Um Sistema de Pedidos de Pizza simples baseado em console, escrito em C, que simula o processo de pedidos de um restaurante. Este projeto demonstra conceitos fundamentais de programação incluindo structs, entrada/saída de arquivos, validação de entrada e design de código modular.
+
+## Funcionalidades
+
+- **Cardápio Interativo**: Navegue por 5 opções diferentes de pizzas com preços
+- **Gerenciamento de Pedidos**: Adicione várias pizzas com quantidades personalizadas
+- **Cálculos Inteligentes**: Cálculo automático de subtotal, taxas (10%) e total
+- **Sistema de Desconto**: Ganhe 10% de desconto quando seu pedido ultrapassar R$ 150
+- **Resumo do Pedido**: Visualize um resumo detalhado antes de completar seu pedido
+- **Armazenamento Persistente**: Todos os pedidos são salvos em `data/orders.txt` com carimbos de data/hora
+- **Validação de Entrada**: Tratamento robusto de erros para entradas inválidas
+
+## Estrutura do Projeto
+
+```
+SistemaPedidosPizza/
+├── src/
+│   ├── main.c          # Programa principal com interface do usuário
+│   └── functions.c     # Implementação da lógica de negócio
+├── include/
+│   └── functions.h     # Arquivo de cabeçalho com declarações
+├── data/
+│   └── orders.txt      # Histórico de pedidos (gerado em tempo de execução)
+├── README.md           # Documentação do projeto
+├── LICENSE             # Licença MIT
+└── .gitignore          # Regras de ignore do Git
+```
+
+## Requisitos
+
+- Compilador GCC (ou qualquer compilador C)
+- Bibliotecas padrão C
+
+## Instalação e Configuração
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/seuusuario/SistemaPedidosPizza.git
+cd SistemaPedidosPizza
+```
+
+2. Compile o programa:
+```bash
+gcc -o pizza src/main.c src/functions.c -I include
+```
+
+3. Execute a aplicação:
+```bash
+./pizza
+```
+
+## Uso
+
+1. O programa exibirá um banner de boas-vindas e o cardápio de pizzas
+2. Digite o número da pizza (1-5) que deseja pedir
+3. Especifique a quantidade
+4. Escolha se deseja adicionar mais itens ou finalizar
+5. Revise o resumo do seu pedido
+6. Seu pedido será salvo em `data/orders.txt`
+
+### Exemplo de Sessão
+
+```
+***********************************************
+*                                             *
+*     BEM-VINDO AO SISTEMA DE PEDIDOS DE     *
+*                   PIZZA                     *
+*                                             *
+***********************************************
+
+===============================================
+               CARDÁPIO DE PIZZAS
+===============================================
+1. Pizza Portuguesa           R$ 45.90
+2. Pizza Francatu             R$ 52.90
+3. Pizza Mussarela            R$ 42.90
+4. Pizza Brocoli              R$ 48.90
+5. Pizza Calabresa            R$ 46.90
+===============================================
+
+Digite o número da pizza (1-5, 0 para finalizar): 2
+Digite a quantidade: 2
+
+2 x Pizza Francatu adicionado ao seu pedido!
+
+Gostaria de adicionar outra pizza? (s/n): s
+
+Digite o número da pizza (1-5, 0 para finalizar): 5
+Digite a quantidade: 1
+
+1 x Pizza Calabresa adicionado ao seu pedido!
+
+Gostaria de adicionar outra pizza? (s/n): n
+
+===============================================
+             RESUMO DO PEDIDO
+===============================================
+
+Itens Pedidos:
+-----------------------------------------------
+2 x Pizza Francatu            R$ 105.80
+1 x Pizza Calabresa           R$ 46.90
+-----------------------------------------------
+Subtotal:                          R$ 152.70
+Desconto (10% em pedidos acima de R$ 150):  -R$ 15.27
+Taxas (10%):                        R$ 13.74
+-----------------------------------------------
+TOTAL:                             R$ 151.17
+
+Pedido salvo em data/orders.txt
+
+===============================================
+  Obrigado pelo seu pedido! Bom apetite!
+===============================================
+```
+
+## Estrutura do Código
+
+O projeto segue um design modular:
+
+- **main.c**: Gerencia o fluxo principal do programa e a interface do usuário
+- **functions.c**: Contém toda a lógica de negócio incluindo:
+  - Exibição do cardápio
+  - Validação de entrada
+  - Processamento de pedidos
+  - Cálculos de preço
+  - Operações de arquivo
+- **functions.h**: Declara todas as funções, structs e constantes
+
+## Recursos Principais Explicados
+
+### Validação de Entrada
+O programa inclui validação abrangente de entrada para lidar com:
+- Entradas não numéricas
+- Seleções de cardápio fora do intervalo
+- Quantidades inválidas
+
+### Desconto Automático
+Pedidos que ultrapassam R$ 150 recebem automaticamente 10% de desconto antes do cálculo das taxas.
+
+### Histórico de Pedidos
+Todos os pedidos são anexados a `data/orders.txt` com:
+- Carimbo de data/hora
+- Lista de itens detalhada
+- Discriminação de preços
+- Total final
+
+## Melhorias Futuras
+
+Recursos potenciais para adicionar:
+- Opções de bebidas e sobremesas
+- Coleta de informações do cliente
+- Edição de pedidos antes do checkout
+- Simulação de múltiplos métodos de pagamento
+- Opção de cancelamento de pedido
+
+## Contribuindo
+
+Este é um projeto pelo aluno Enzo Lima da universidade Uninove. Mas sugestões e melhorias são bem-vindas!
+
+## Autor
+
+Criado como um projeto de programação do professor Luis Carlos para demonstrar fundamentos de programação em C.
